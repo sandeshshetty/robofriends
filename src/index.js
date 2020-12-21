@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Hello from './Hello';
+import Card from './Card';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Hello greeting=" react parameter" />
+    <Card /><Card /><Card /><Card />
   </React.StrictMode>,
   document.getElementById('root')
 );
