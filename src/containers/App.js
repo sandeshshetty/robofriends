@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
-import Scroll from './Scroll';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll';
 import './App.css';
 
 // Use class mode instead of method to use state
@@ -30,9 +30,10 @@ class App extends Component {
     }
 
     render() {
-        const filteredRobots = this.state.robots.filter(robot => {
+        const { robots, searchField } = this.state;
+        const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(
-                this.state.searchField.toLowerCase());
+                searchField.toLowerCase());
         });
 
         return (
@@ -40,7 +41,7 @@ class App extends Component {
                 <h1 className='ttu f2'>RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange} />
                 <Scroll>
-                    {this.state.robots.length === 0 && <h2>Loading</h2>}
+                    {!robots.length && <h2>Loading</h2>}
                     <CardList robots={filteredRobots} />
                 </Scroll>
             </div>
