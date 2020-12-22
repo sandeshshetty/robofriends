@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
+import Scroll from './Scroll';
 import './App.css';
 
 // Use class mode instead of method to use state
@@ -19,13 +20,13 @@ class App extends Component {
     componentDidMount() {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
-            .then(users => this.setState({robots: users}))
+            .then(users => this.setState({ robots: users }))
     }
 
     // Use arrow operator for this reference in event callbacks
     onSearchChange = (event) => {
         // Use instead of this.state.searchField = ''
-        this.setState({ searchField: event.target.value});
+        this.setState({ searchField: event.target.value });
     }
 
     render() {
@@ -33,13 +34,15 @@ class App extends Component {
             return robot.name.toLowerCase().includes(
                 this.state.searchField.toLowerCase());
         });
-        
+
         return (
             <div className='tc'>
                 <h1 className='ttu f2'>RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange} />
-                {this.state.robots.length === 0 && <h2>Loading</h2>}
-                <CardList robots={filteredRobots} />
+                <Scroll>
+                    {this.state.robots.length === 0 && <h2>Loading</h2>}
+                    <CardList robots={filteredRobots} />
+                </Scroll>
             </div>
         );
     }
