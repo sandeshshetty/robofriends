@@ -1,8 +1,8 @@
 # React learning project
 
-Examples of components, properties, state, lifecycle and events using the React framework.
+Examples of components, properties, state, lifecycle and events using the React framework
 
-Go to https://sandeshshetty.github.io/robofriends to see a live demo of this repository
+Go to https://sandeshshetty.github.io/robofriends/ to see a live demo of this repository
 
 ## Available Scripts
 
